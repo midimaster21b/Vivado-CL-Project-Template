@@ -4,12 +4,13 @@
 ## Step #0: Set up working environment
 ##
 
+source "recursive_glob.tcl"
+
 set currentDir [file dirname $::argv0]
 set outputDir $currentDir/project_output
 file mkdir $outputDir
 
-set projectSourceDir vgademo0_block.srcs
-set projectTopFile vgademo0_block_top
+set projectTopFile vgademo0_block_top; # THIS FILE NEEDS TO BE CHANGED FOR YOUR SPECIFIC PROJECT
 set projectPart xc7a35tcpg236-1
 
 set_property SEVERITY {Warning} [get_drc_checks NSTD-1]
@@ -20,13 +21,13 @@ set_property SEVERITY {Warning} [get_drc_checks UCIO-1]
 ##
 
 # Read source files
-read_vhdl  [ glob $currentDir/$projectSourceDir/sources_1/new/*.vhd ]
+read_vhdl  [ glob-r $currentDir *.vhd ]
 
 # Read IP
-read_ip $currentDir/$projectSourceDir/sources_1/ip/clk_wiz_0.xcix
+read_ip    [ glob-r $currentDir *.xcix ]
 
 # Read constraint files
-read_xdc $currentDir/$projectSourceDir/constrs_1/new/vgatop_pins.xdc
+read_xdc   [ glob-r $currentDir *.xdc ]
 
 ##
 ## Step #2: run synthesis, report utilization and timing estimates, write checkpoint design
