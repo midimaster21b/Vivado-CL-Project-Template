@@ -5,6 +5,7 @@ This set of scripts was developed to allow a developer to program a device witho
 ## Getting started
 
 1. Clone this repository as a base for the Vivado project you will be creating.
+1. Modify the gen_bitstream.tcl file to match the project specifics.
 1. Modify the sync.sh file to match the host system you will be using to process your HDL.
 1. Follow the workflow below.
 

@@ -6,12 +6,20 @@
 
 source "recursive_glob.tcl"
 
+##################################
+# BEGIN PROJECT SPECIFIC CHANGES
+##################################
+
+set projectTopFile vgademo4_all_top
+set projectPart xc7a35tcpg236-1
+
+##################################
+# FINISH PROJECT SPECIFIC CHANGES
+##################################
+
 set currentDir [file dirname $::argv0]
 set outputDir $currentDir/project_output
 file mkdir $outputDir
-
-set projectTopFile vgademo0_block_top; # THIS FILE NEEDS TO BE CHANGED FOR YOUR SPECIFIC PROJECT
-set projectPart xc7a35tcpg236-1
 
 set_property SEVERITY {Warning} [get_drc_checks NSTD-1]
 set_property SEVERITY {Warning} [get_drc_checks UCIO-1]
