@@ -10,7 +10,7 @@ source "recursive_glob.tcl"
 # BEGIN PROJECT SPECIFIC CHANGES
 ##################################
 
-set projectTopFile vgademo4_all_top
+set projectTopEntity ProjectTwo_top
 set projectPart xc7a35tcpg236-1
 
 ##################################
@@ -40,7 +40,7 @@ read_xdc   [ glob-r $currentDir *.xdc ]
 ##
 ## Step #2: run synthesis, report utilization and timing estimates, write checkpoint design
 ##
-synth_design -top $projectTopFile -part $projectPart -flatten rebuilt
+synth_design -top $projectTopEntity -part $projectPart -flatten rebuilt
 write_checkpoint -force $outputDir/post_synth
 report_timing_summary -file $outputDir/post_synth_timing_summary.rpt
 report_power -file $outputDir/post_synth_power.rpt
@@ -71,5 +71,5 @@ write_verilog -force $outputDir/project_impl_netlist.v
 ##
 ## Step #5: generate a bitstream
 ##
-write_bitstream -force $outputDir/$projectTopFile.bit
+write_bitstream -force $outputDir/$projectTopEntity.bit
 
