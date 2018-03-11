@@ -21,8 +21,8 @@ current_hw_device [lindex [get_hw_devices] 0]
 # Refresh the current hw device (NOT SURE WHY THIS IS NECESSARY)
 refresh_hw_device -update_hw_probes false [lindex [get_hw_devices] 0]
 
-# Set the file to be programmed to the device
-set_property PROGRAM.FILE {C:\Users\edgco\School\EGR526\VGA\vgademo0_block\vgademo0_block_top.bit} [lindex [get_hw_devices] 0]
+# Set the file to be programmed to the device (Assumes only a single bitfile is present in current working directory)
+set_property PROGRAM.FILE [ glob ./*.bit ] [lindex [get_hw_devices] 0]
 
 # Program the device
 program_hw_devices [lindex [get_hw_devices] 0]
